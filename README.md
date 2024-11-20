@@ -9,7 +9,8 @@
   <img src="https://img.shields.io/badge/-Node.js-000000.svg?logo=node.js&style=for-the-badge">
   <img src="https://img.shields.io/badge/-Next.js-000000.svg?logo=next.js&style=for-the-badge">
   <img src="https://img.shields.io/badge/-React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">
-  <img src="https://img.shields.io/badge/-TypeScript-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">
+  <img src="https://img.shields.io/badge/-TypeScript-20232A?style=for-the-badge&logo=typescript">
+  <img src="https://img.shields.io/badge/-Redux-20232A?style=for-the-badge&logo=redux">
 </p>
 
 ## 目次
@@ -17,210 +18,184 @@
 1. [プロジェクトについて](#プロジェクトについて)
 2. [環境](#環境)
 3. [ディレクトリ構成](#ディレクトリ構成)
-4. [開発環境構築](#開発環境構築)
-5. [トラブルシューティング](#トラブルシューティング)
+4. [デザイン](#デザイン)
+5. [TODO](#TODO)
 
 <!-- プロジェクト名を記載 -->
 
 ## プロジェクト名
 
-React、DRF、Terraform のテンプレートリポジトリ
+myProfileSite
 
 <!-- プロジェクトについて -->
 
 ## プロジェクトについて
 
-React、DRF、Terraform を勉強する際に使用できるテンプレート
+React/Next.js を利用したポートフォリオサイト。
+
+- 自己紹介
+- 各種 SNS リンク
+- 投稿したブログ
+- contact
 
 <!-- プロジェクトの概要を記載 -->
-
-  <p align="left">
-    <br />
-    <!-- プロジェクト詳細にBacklogのWikiのリンク -->
-    <a href="Backlogのwikiリンク"><strong>プロジェクト詳細 »</strong></a>
-    <br />
-    <br />
-
-<p align="right">(<a href="#top">トップへ</a>)</p>
 
 ## 環境
 
 <!-- 言語、フレームワーク、ミドルウェア、インフラの一覧とバージョンを記載 -->
 
-| 言語・フレームワーク  | バージョン |
-| --------------------- | ---------- |
-| Python                | 3.11.4     |
-| Django                | 4.2.1      |
-| Django Rest Framework | 3.14.0     |
-| MySQL                 | 8.0        |
-| Node.js               | 16.17.0    |
-| React                 | 18.2.0     |
-| Next.js               | 13.4.6     |
-| Terraform             | 1.3.6      |
+| 言語・フレームワーク | バージョン |
+| -------------------- | ---------- |
+| React                | 18.2.0     |
+| Next.js              | 13.4.6     |
+| Next.js              | 13.4.6     |
+| Next.js              | 13.4.6     |
+| Next.js              | 13.4.6     |
+| Next.js              | 13.4.6     |
+| Next.js              | 13.4.6     |
 
 その他のパッケージのバージョンは pyproject.toml と package.json を参照してください
-
-<p align="right">(<a href="#top">トップへ</a>)</p>
 
 ## ディレクトリ構成
 
 <!-- Treeコマンドを使ってディレクトリ構成を記載 -->
 
-❯ tree -a -I "node_modules|.next|.git|.pytest_cache|static" -L 2
+❯ tree -a -I "node_modules|.next|.git"
 .
-├── .devcontainer
-│ └── devcontainer.json
-├── .env
-├── .github
-│ ├── action
-│ ├── release-drafter.yml
-│ └── workflows
+├── .eslintrc.json
+├── .git
+│ ├── COMMIT_EDITMSG
+│ ├── HEAD
+│ ├── config
+│ ├── description
+│ ├── hooks
+│ │ ├── applypatch-msg.sample
+│ │ ├── commit-msg.sample
+│ │ ├── fsmonitor-watchman.sample
+│ │ ├── post-update.sample
+│ │ ├── pre-applypatch.sample
+│ │ ├── pre-commit.sample
+│ │ ├── pre-merge-commit.sample
+│ │ ├── pre-push.sample
+│ │ ├── pre-rebase.sample
+│ │ ├── pre-receive.sample
+│ │ ├── prepare-commit-msg.sample
+│ │ ├── push-to-checkout.sample
+│ │ └── update.sample
+│ ├── index
+│ ├── info
+│ │ └── exclude
+│ ├── logs
+│ │ ├── HEAD
+│ │ └── refs
+│ │ ├── heads
+│ │ │ └── main
+│ │ └── remotes
+│ │ └── origin
+│ │ └── main
+│ ├── objects
+│ │ ├── 00
+│ │ │ └── 4145cddf3f9db91b57b9cb596683c8eb420862
+│ │ ├── 12
+│ │ │ └── 9fa870ebf51cc7e7487916d05075ceabf49eaf
+│ │ ├── 1b
+│ │ │ └── 62daacff96dad6584e71cd962051b82957c313
+│ │ ├── 25
+│ │ │ └── 966cf1f7daef67d8dd51ed0467fa9348c61f9d
+│ │ ├── 26
+│ │ │ └── 2211524f06783d6195a801431dfd6a7ac898d3
+│ │ ├── 37
+│ │ │ ├── 224185490e6db2d26a574d66d4d476336bf644
+│ │ │ └── 30dbd69cba6ac339c4b58d1d6ee2f3f591c7ba
+│ │ ├── 43
+│ │ │ └── 365afe3f291e3e46a6b8a024d175488536310e
+│ │ ├── 51
+│ │ │ └── 74b28c565c285e3e312ec5178be64fbeca8398
+│ │ ├── 56
+│ │ │ └── 7f17b0d7c7fb662c16d4357dd74830caf2dccb
+│ │ ├── 5d
+│ │ │ └── e84702f08db97e77b4202f7b3999ea494ca8cf
+│ │ ├── 6e
+│ │ │ └── 182ee8c4fea4bcf0cecaac6af6c37827a77a9f
+│ │ ├── 71
+│ │ │ ├── 8d6fea4835ec2d246af9800eddb7ffb276240c
+│ │ │ └── e1342cdb7135c0949e1db4c6e02e09d8b02b0d
+│ │ ├── 77
+│ │ │ └── 053960334e2e34dc584dea8019925c3b4ccca9
+│ │ ├── 84
+│ │ │ └── af2cb0e607ae0c0820d45757eb35fbfc048e2b
+│ │ ├── b2
+│ │ │ └── b2a44f6ebc70c450043c05a002e7a93ba5d651
+│ │ ├── c1
+│ │ │ └── 334095f876a408c10f2357faaced969ec090ab
+│ │ ├── c8
+│ │ │ └── 8f389de09f418da376598c42e8788d4fb6d172
+│ │ ├── d3
+│ │ │ └── 2cc78b89fc9af2b1caf304864e10f041df05e6
+│ │ ├── da
+│ │ │ └── 22aa556a85e9e6c31838885ab922b365d3d5f2
+│ │ ├── dc
+│ │ │ └── a06aee77143fbbf6668760a6b8ca3b50bbf84d
+│ │ ├── e2
+│ │ │ └── 15bc4ccf138bbc38ad58ad57e92135484b3c0f
+│ │ ├── e3
+│ │ │ └── 734be15e1f6fbb4b207761c8e424b77cf3a4eb
+│ │ ├── e9
+│ │ │ └── ffa3083ad279ecf95fd8eae59cb253e9a539c4
+│ │ ├── ee
+│ │ │ └── 9b8e6339404c1a331833c3db7cc55b4045aab2
+│ │ ├── f2
+│ │ │ └── ae185cbfd16946a534d819e9eb03924abbcc49
+│ │ ├── fc
+│ │ │ └── b741a341df889205f9868e01cdef51cc530ae9
+│ │ ├── info
+│ │ └── pack
+│ └── refs
+│ ├── heads
+│ │ └── main
+│ ├── remotes
+│ │ └── origin
+│ │ └── main
+│ └── tags
 ├── .gitignore
-├── Makefile
 ├── README.md
-├── backend
-│ ├── .vscode
-│ ├── application
-│ ├── docs
-│ ├── manage.py
-│ ├── output
-│ ├── poetry.lock
-│ ├── project
-│ └── pyproject.toml
-├── containers
-│ ├── django
-│ ├── front
-│ ├── mysql
-│ └── nginx
-├── docker-compose.yml
-├── frontend
-│ ├── .gitignore
-│ ├── README.md
-│ ├── **test**
-│ ├── components
-│ ├── features
-│ ├── next-env.d.ts
-│ ├── package-lock.json
-│ ├── package.json
-│ ├── pages
-│ ├── postcss.config.js
-│ ├── public
-│ ├── styles
-│ ├── tailwind.config.js
-│ └── tsconfig.json
-└── infra
-├── .gitignore
-├── docker-compose.yml
-├── main.tf
-├── network.tf
-└── variables.tf
+├── next-env.d.ts
+├── next.config.ts
+├── package-lock.json
+├── package.json
+├── public
+│ ├── file.svg
+│ ├── globe.svg
+│ ├── next.svg
+│ ├── vercel.svg
+│ └── window.svg
+├── src
+│ └── app
+│ ├── favicon.ico
+│ ├── fonts
+│ │ ├── GeistMonoVF.woff
+│ │ └── GeistVF.woff
+│ ├── globals.css
+│ ├── layout.tsx
+│ ├── page.module.css
+│ └── page.tsx
+└── tsconfig.json
 
-<p align="right">(<a href="#top">トップへ</a>)</p>
+## デザイン
 
-## 開発環境構築
+ここに Figma で作成したイメージ画像を載せる
 
-<!-- コンテナの作成方法、パッケージのインストール方法など、開発環境構築に必要な情報を記載 -->
+## TODO
+- これを参考に要件定義を先に実施しようか
+https://qiita.com/mosyaneko/items/8a084443ea60d8da9d53
 
-### コンテナの作成と起動
+- ヘッダー・フッターに何を追加するかまとめる
+- TOPページをコンポーネント分解せずに作成する
+- コンポーネント追加する
+- 全体レイアウトを作成する
 
-.env ファイルを以下の環境変数例と[環境変数の一覧](#環境変数の一覧)を元に作成
+UIコンポーネントはStorybookに追加する
+UIコンポーネントはテストを書くことを必須とする
 
-.env
-MYSQL_ROOT_PASSWORD=root
-MYSQL_DATABASE=django-db
-MYSQL_USER=django
-MYSQL_PASSWORD=django
-MYSQL_HOST=db
-MYSQL_PORT=3306
-SECRET_KEY=django
-DJANGO_SETTINGS_MODULE=project.settings.local
 
-.env ファイルを作成後、以下のコマンドで開発環境を構築
-
-make prepare
-
-### 動作確認
-
-http://127.0.0.1:8000 にアクセスできるか確認
-アクセスできたら成功
-
-### コンテナの停止
-
-以下のコマンドでコンテナを停止することができます
-
-make down
-
-### 環境変数の一覧
-
-| 変数名                 | 役割                                      | デフォルト値                       | DEV 環境での値                           |
-| ---------------------- | ----------------------------------------- | ---------------------------------- | ---------------------------------------- |
-| MYSQL_ROOT_PASSWORD    | MySQL のルートパスワード（Docker で使用） | root                               |                                          |
-| MYSQL_DATABASE         | MySQL のデータベース名（Docker で使用）   | django-db                          |                                          |
-| MYSQL_USER             | MySQL のユーザ名（Docker で使用）         | django                             |                                          |
-| MYSQL_PASSWORD         | MySQL のパスワード（Docker で使用）       | django                             |                                          |
-| MYSQL_HOST             | MySQL のホスト名（Docker で使用）         | db                                 |                                          |
-| MYSQL_PORT             | MySQL のポート番号（Docker で使用）       | 3306                               |                                          |
-| SECRET_KEY             | Django のシークレットキー                 | secretkey                          | 他者に推測されないランダムな値にすること |
-| ALLOWED_HOSTS          | リクエストを許可するホスト名              | localhost 127.0.0.1 [::1] back web | フロントのホスト名                       |
-| DEBUG                  | デバッグモードの切り替え                  | True                               | False                                    |
-| TRUSTED_ORIGINS        | CORS で許可するオリジン                   | http://localhost                   |                                          |
-| DJANGO_SETTINGS_MODULE | Django アプリケーションの設定モジュール   | project.settings.local             | project.settings.dev                     |
-
-### コマンド一覧
-
-| Make                | 実行する処理                                                            | 元のコマンド                                                                               |
-| ------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| make prepare        | node_modules のインストール、イメージのビルド、コンテナの起動を順に行う | docker-compose run --rm front npm install<br>docker-compose up -d --build                  |
-| make up             | コンテナの起動                                                          | docker-compose up -d                                                                       |
-| make build          | イメージのビルド                                                        | docker-compose build                                                                       |
-| make down           | コンテナの停止                                                          | docker-compose down                                                                        |
-| make loaddata       | テストデータの投入                                                      | docker-compose exec app poetry run python manage.py loaddata crm.json                      |
-| make makemigrations | マイグレーションファイルの作成                                          | docker-compose exec app poetry run python manage.py makemigrations                         |
-| make migrate        | マイグレーションを行う                                                  | docker-compose exec app poetry run python manage.py migrate                                |
-| make show_urls      | エンドポイントをターミナル上で一覧表示                                  | docker-compose exec app poetry run python manage.py show_urls                              |
-| make shell          | テストデータの投入                                                      | docker-compose exec app poetry run python manage.py debugsqlshell                          |
-| make superuser      | スーパーユーザの作成                                                    | docker-compose exec app poetry run python manage.py createsuperuser                        |
-| make test           | テストを実行                                                            | docker-compose exec app poetry run pytest                                                  |
-| make test-cov       | カバレッジを表示させた上でテストを実行                                  | docker-compose exec app poetry run pytest --cov                                            |
-| make format         | black と isort を使ってコードを整形                                     | docker-compose exec app poetry run black . <br> docker-compose exec app poetry run isort . |
-| make update         | Poetry 内のパッケージの更新                                             | docker-compose exec app poetry update                                                      |
-| make app            | アプリケーション のコンテナへ入る                                       | docker exec -it app bash                                                                   |
-| make db             | データベースのコンテナへ入る                                            | docker exec -it db bash                                                                    |
-| make pdoc           | pdoc ドキュメントの作成                                                 | docker-compose exec app env CI_MAKING_DOCS=1 poetry run pdoc -o docs application           |
-| make init           | Terraform の初期化                                                      | docker-compose -f infra/docker-compose.yml run --rm terraform init                         |
-| make fmt            | Terraform の設定ファイルをフォーマット                                  | docker-compose -f infra/docker-compose.yml run --rm terraform fmt                          |
-| make validate       | Terraform の構成ファイルが正常であることを確認                          | docker-compose -f infra/docker-compose.yml run --rm terraform validate                     |
-| make show           | 現在のリソースの状態を参照                                              | docker-compose -f infra/docker-compose.yml run --rm terraform show                         |
-| make apply          | Terraform の内容を適用                                                  | docker-compose -f infra/docker-compose.yml run --rm terraform apply                        |
-| make destroy        | Terraform で構成されたリソースを削除                                    | docker-compose -f infra/docker-compose.yml run --rm terraform destroy                      |
-
-### リモートデバッグの方法
-
-リモートデバッグ を使用する際は以下の url を参考に設定してください<br>
-[Django のコンテナへリモートデバッグしよう！](https://qiita.com/shun198/items/9e4fcb4479385217c323)
-
-## トラブルシューティング
-
-### .env: no such file or directory
-
-.env ファイルがないので環境変数の一覧を参考に作成しましょう
-
-### docker daemon is not running
-
-Docker Desktop が起動できていないので起動させましょう
-
-### Ports are not available: address already in use
-
-別のコンテナもしくはローカル上ですでに使っているポートがある可能性があります
-<br>
-下記記事を参考にしてください
-<br>
-[コンテナ起動時に Ports are not available: address already in use が出た時の対処法について](https://qiita.com/shun198/items/ab6eca4bbe4d065abb8f)
-
-### Module not found
-
-make build
-
-を実行して Docker image を更新してください
-
-<p align="right">(<a href="#top">トップへ</a>)</p>
+https://blog.microcms.io/microcms-next15-jamstack-blog/を利用してブログを取得できるようにする
