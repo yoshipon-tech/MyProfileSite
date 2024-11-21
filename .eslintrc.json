@@ -1,3 +1,54 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  // extendsで指定したルールセットに含まれていないプラグインを記載する
+  "plugins": ["unused-imports"],
+  // 他の設定ファイルを継承してルールをまとめて適用
+  "extends": [
+    "next/core-web-vitals",
+    "next/typescript",
+    "airbnb",
+    "plugin:jsx-a11y/recommended",
+    "prettier"
+  ],
+  // ESLint の挙動を細かくカスタマイズする
+  "rules": {
+    // 未使用の import 文を検出し、エラーとする
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": "off",
+    "import/order": [
+      "error",
+      {
+        // インポートを分類するグループの順序を定義
+        "groups": [
+          "builtin", // Node.js の組み込みモジュール
+          "external", //外部ライブラリ
+          "internal", //プロジェクト内の内部モジュール
+          "parent", //親ディレクトリからの相対インポート
+          "sibling", //同じディレクトリ内の相対インポート
+          "index", //ディレクトリ内のインデックスファイル
+          "object", //require などの非 ES モジュール形式
+          "type" //型インポート
+        ],
+        // グループ間に改行を追加するかどうか
+        "newlines-between": "always",
+        // 特定のグループを pathGroups の影響外に設定
+        "pathGroupsExcludedImportTypes": ["builtin"],
+        // グループ内のインポートをアルファベット順に並び替え
+        "alphabetize": { "order": "asc", "caseInsensitive": true },
+        // 特定のパスに独自のグループ設定や優先順位を適用
+        "pathGroups": [
+          //この場合はsrc/types以下のファイルをinternalグループに移動し,internalグループの他インポートよりも前に配置
+          {
+            "pattern": "src/types/**",
+            "group": "internal",
+            "position": "before"
+          },
+          {
+            "pattern": "src/repositories/**",
+            "group": "internal",
+            "position": "before"
+          }
+        ]
+      }
+    ]
+  }
 }
